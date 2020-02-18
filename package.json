@@ -1,0 +1,17 @@
+{
+  "name": "hello-celo-contractkit",
+  "version": "1.0.0",
+  "description": "An introduction to using Celo ContractKit",
+  "author": "Celo",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"TODO\" && exit 1"
+  },
+  "dependencies": {
+    "@celo/contractkit": "0.2.14",
+    "web3": "1.0.0-beta.37",
+    "yargs": "^15.1.0"
+  }
+}
