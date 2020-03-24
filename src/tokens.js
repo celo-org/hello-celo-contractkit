@@ -42,12 +42,18 @@ async function sendPayment(params) {
   console.log('Kit contract is set up, creating transaction')
 
   // Create the payment transaction
-  const tx = await contract.transfer(recipient, amount).send()
-  const receipt = await tx.waitReceipt()
-  console.log('Tx receipt recieved', receipt)
-  const newBalance = await contract.balanceOf(account.address)
-  console.log(`New balance is ${newBalance.toString()}`)
-  kit.stop()
+  try {
+    const tx = await contract.transfer(recipient, amount).send()
+    const receipt = await tx.waitReceipt()
+    console.log('Tx receipt recieved', receipt)
+    const newBalance = await contract.balanceOf(account.address)
+    console.log(`New balance is ${newBalance.toString()}`)
+  } catch (error) {
+    console.error('Error sending payment, please try again', error)
+  }
+  finally {
+    kit.stop()
+  }
 }
 
 module.exports = {
